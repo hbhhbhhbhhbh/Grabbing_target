@@ -1,0 +1,4 @@
+本次项目中，vision_project为主根目录文件夹，perception为项目模块存放
+main_camera_test----main_step6_output_format为第一部分工作，主要为输出主要坐标
+main_step7至main_step9为识别工作，语音辅助抓取物品
+本次项目所采用python为3.11版本

@@ -1,0 +1,6 @@
+path: datasets/pocari_yolo_aug
+train: images/train
+val: images/val
+test: images/test
+nc: 1
+names: ['pocari']

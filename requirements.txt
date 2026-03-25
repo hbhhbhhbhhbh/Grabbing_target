@@ -1,0 +1,12 @@
+# 视觉辅助系统精度优化版 - 依赖清单
+
+# 核心计算机视觉库
+opencv-python>=4.8.0
+ultralytics>=8.0.0  # YOLOv8
+mediapipe>=0.10.0   # 手部追踪
+
+# 科学计算
+numpy>=1.24.0
+
+# 可选：性能分析
+# time  # Python 内置

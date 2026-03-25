@@ -1,0 +1,10 @@
+{
+  "total_pairs": 203,
+  "split_counts": {
+    "train": 162,
+    "val": 20,
+    "test": 21
+  },
+  "num_aug_per_train_image": 4,
+  "target_class": 0
+}
