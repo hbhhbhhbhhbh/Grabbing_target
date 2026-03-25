@@ -11,6 +11,9 @@ from perception.state_machine import GuidanceStateMachine
 from perception.temporal_smoother import BMASmoother
 from perception.roi_attention import ROIAttention
 
+MODEL_TARGET_LABEL = "pocari"
+DISPLAY_LABEL = "Monster"
+
 
 def compute_box_area(box):
     """计算包围盒面积"""
@@ -39,11 +42,11 @@ def main():
     
     detector = ObjectDetector(
         model_path="best.pt",
-        target_labels=["pocari"],
+        target_labels=[MODEL_TARGET_LABEL],
         conf_threshold=0.35,
         iou_threshold=0.45,
         input_size=480,
-        label_weights={"pocari": 1.2}
+        label_weights={MODEL_TARGET_LABEL: 1.2}
     )
 
     tracker = HandTracker(model_path="hand_landmarker.task")
@@ -99,8 +102,10 @@ def main():
             frame=frame,
             detections=detections,
             hand_info=hand_info,
-            preferred_label="pocari"
+            preferred_label=MODEL_TARGET_LABEL
         )
+        if perception_data["object_found"]:
+            perception_data["object_label"] = DISPLAY_LABEL
 
         # ========== 4. 时序平滑（对选中目标） ==========
         if perception_data["object_found"]:
@@ -174,7 +179,7 @@ def main():
         for det in detections:
             x1, y1, x2, y2 = det["box"]
             cx, cy = det["center"]
-            label = det["label"]
+            label = DISPLAY_LABEL
             conf = det["conf"]
 
             in_roi = det.get("in_roi", False)
